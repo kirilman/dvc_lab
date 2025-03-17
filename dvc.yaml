@@ -1,0 +1,21 @@
+stages:
+  prepare_dataset:
+    cmd: python src/stages/prepare_dataset.py
+    deps:
+    - src/stages/prepare_dataset.py
+    outs:
+    - ./data/final.csv
+  data_split:
+    cmd: python src/stages/data_splite.py
+    deps:
+    - src/stages/data_splite.py
+    outs:
+    - ./data/test_cars.csv
+    - ./data/train_cars.csv
+  train:
+    cmd: python src/stages/train.py
+    deps:
+    - src/stages/train.py
+    outs:
+    - ./models/lr_cars.joblib
+    - ./models/power.joblib

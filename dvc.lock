@@ -1,0 +1,46 @@
+schema: '2.0'
+stages:
+  prepare_dataset:
+    cmd: python src/stages/prepare_dataset.py
+    deps:
+    - path: src/stages/prepare_dataset.py
+      hash: md5
+      md5: 9da4405838117da0de826f165738f879
+      size: 2914
+    outs:
+    - path: ./data/final.csv
+      hash: md5
+      md5: 67f7731cd046402d3672863597e62233
+      size: 2755052
+  data_split:
+    cmd: python src/stages/data_splite.py
+    deps:
+    - path: src/stages/data_splite.py
+      hash: md5
+      md5: bd60e1d6be4fa9f50b617db37d784651
+      size: 957
+    outs:
+    - path: ./data/test_cars.csv
+      hash: md5
+      md5: 720c4b77897fcbf69a21844e0667a86f
+      size: 825098
+    - path: ./data/train_cars.csv
+      hash: md5
+      md5: ce0a11190c614c22722d2b0997225950
+      size: 1926042
+  train:
+    cmd: python src/stages/train.py
+    deps:
+    - path: src/stages/train.py
+      hash: md5
+      md5: ccf25734b08fc757ea80a8c7f3aed052
+      size: 292
+    outs:
+    - path: ./models/lr_cars.joblib
+      hash: md5
+      md5: 6f21c97748b20a4bfeb65eea37cd7da3
+      size: 1401
+    - path: ./models/power.joblib
+      hash: md5
+      md5: 117b0ede4d8a9759b1d7e89b4c90fe87
+      size: 662

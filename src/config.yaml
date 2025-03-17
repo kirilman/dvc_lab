@@ -1,0 +1,12 @@
+data_load:
+  dataset_csv: "data/cars.csv"
+featurize:
+  features_path: "data/final.csv"
+data_split:
+  test_size: 0.3
+  trainset_path: "data/train_cars.csv"
+  testset_path: "data/test_cars.csv"
+train:
+  cv: 3
+  model_path: "models/lr_cars.joblib"
+  power_path: "models/power.joblib"
