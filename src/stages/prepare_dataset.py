@@ -65,13 +65,18 @@ def scale_frame(frame):
     return X_scale, Y_scale, power_trans
 
 def featurize(dframe, config) -> None:
-    """Create new features
+    """
+        Генерация новых признаков
     """
     logger = get_logger('FEATURIZE')
     logger.info('Create features')
     dframe['Distance_by_year'] = dframe['Distance']/(2022 - dframe['Year'])
+    dframe['age'] = 2022 - dframe['Year']
     mean_engine_cap = dframe.groupby('Style')['Engine_capacity(cm3)'].mean()
     dframe['eng_cap_diff'] = dframe.apply(lambda row: abs(row['Engine_capacity(cm3)'] - mean_engine_cap[row['Style']]), axis=1)
+
+    max_engine_cap = dframe.groupby('Style')['Engine_capacity(cm3)'].max()
+    dframe['eng_cap_diff_max'] = dframe.apply(lambda row: abs(row['Engine_capacity(cm3)'] - max_engine_cap[row['Style']]), axis=1)
 
     features_path = config['featurize']['features_path']
     dframe.to_csv(features_path, index=False)
