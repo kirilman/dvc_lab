@@ -9,6 +9,7 @@ stages:
     cmd: python src/stages/data_splite.py
     deps:
     - src/stages/data_splite.py
+    - ./data/final.csv
     outs:
     - ./data/test_cars.csv
     - ./data/train_cars.csv
@@ -16,6 +17,8 @@ stages:
     cmd: python src/stages/train.py
     deps:
     - src/stages/train.py
+    - ./data/test_cars.csv
+    - ./data/train_cars.csv
     outs:
     - ./models/lr_cars.joblib
     - ./models/power.joblib
