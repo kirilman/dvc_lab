@@ -3,12 +3,14 @@ stages:
     cmd: python src/stages/prepare_dataset.py
     deps:
     - src/stages/prepare_dataset.py
+    - src/config.yaml
     outs:
     - ./data/final.csv
   data_split:
     cmd: python src/stages/data_splite.py
     deps:
     - src/stages/data_splite.py
+    - src/config.yaml
     - ./data/final.csv
     outs:
     - ./data/test_cars.csv
@@ -16,9 +18,10 @@ stages:
   train:
     cmd: python src/stages/train.py
     deps:
+    - src/config.yaml
     - src/stages/train.py
     - ./data/test_cars.csv
     - ./data/train_cars.csv
     outs:
-    - ./models/lr_cars.joblib
+    - ./models/cars.joblib
     - ./models/power.joblib
