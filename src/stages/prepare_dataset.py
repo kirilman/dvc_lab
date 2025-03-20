@@ -71,7 +71,7 @@ def featurize(dframe, config) -> None:
     logger = get_logger('FEATURIZE')
     logger.info('Create features')
     dframe['Distance_by_year'] = dframe['Distance']/(2022 - dframe['Year'])
-    dframe['age'] = 2022 - dframe['Year']
+    dframe['age'] = 2024 - dframe['Year']
     mean_engine_cap = dframe.groupby('Style')['Engine_capacity(cm3)'].mean()
     dframe['eng_cap_diff'] = dframe.apply(lambda row: abs(row['Engine_capacity(cm3)'] - mean_engine_cap[row['Style']]), axis=1)
 

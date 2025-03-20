@@ -25,3 +25,13 @@ stages:
     outs:
     - ./models/cars.joblib
     - ./models/power.joblib
+  test_model:
+    cmd: python src/stages/test_model.py
+    deps:
+    - src/config.yaml
+    - src/stages/test_model.py
+metrics:
+- dvclive/metrics.json
+plots:
+- dvclive/plots/metrics:
+    x: step

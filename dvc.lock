@@ -5,28 +5,28 @@ stages:
     deps:
     - path: src/config.yaml
       hash: md5
-      md5: fb61ab250568f7502e76044c77412df6
-      size: 362
+      md5: 2caf6bf69c969efd87e68a43bbee5e3c
+      size: 480
     - path: src/stages/prepare_dataset.py
       hash: md5
-      md5: 7d174c4cdcceaf37f8cb03c944d05986
+      md5: d97090c1e17bc47091f8178b7ef34cfd
       size: 3206
     outs:
     - path: ./data/final.csv
       hash: md5
-      md5: 84e6328b718309db0df81ed2114b7e1e
-      size: 3054684
+      md5: 7852d6b8bd9357d63aece48a66904ce6
+      size: 3058352
   data_split:
     cmd: python src/stages/data_splite.py
     deps:
     - path: ./data/final.csv
       hash: md5
-      md5: 84e6328b718309db0df81ed2114b7e1e
-      size: 3054684
+      md5: 7852d6b8bd9357d63aece48a66904ce6
+      size: 3058352
     - path: src/config.yaml
       hash: md5
-      md5: fb61ab250568f7502e76044c77412df6
-      size: 362
+      md5: 2caf6bf69c969efd87e68a43bbee5e3c
+      size: 480
     - path: src/stages/data_splite.py
       hash: md5
       md5: bd60e1d6be4fa9f50b617db37d784651
@@ -34,37 +34,48 @@ stages:
     outs:
     - path: ./data/test_cars.csv
       hash: md5
-      md5: 0a762460602cea884d5ed37f7fbf4def
-      size: 915187
+      md5: 10e241452e3dfdd4d1cbfb7f4aed5d29
+      size: 916320
     - path: ./data/train_cars.csv
       hash: md5
-      md5: 78baa9081ac85b04c0aab3e394b373d9
-      size: 2135314
+      md5: 2b1ba19f9c6f383b8d10dd7dbd039461
+      size: 2137849
   train:
     cmd: python src/stages/train.py
     deps:
     - path: ./data/test_cars.csv
       hash: md5
-      md5: 0a762460602cea884d5ed37f7fbf4def
-      size: 915187
+      md5: 10e241452e3dfdd4d1cbfb7f4aed5d29
+      size: 916320
     - path: ./data/train_cars.csv
       hash: md5
-      md5: 78baa9081ac85b04c0aab3e394b373d9
-      size: 2135314
+      md5: 2b1ba19f9c6f383b8d10dd7dbd039461
+      size: 2137849
     - path: src/config.yaml
       hash: md5
-      md5: fb61ab250568f7502e76044c77412df6
-      size: 362
+      md5: 2caf6bf69c969efd87e68a43bbee5e3c
+      size: 480
     - path: src/stages/train.py
       hash: md5
-      md5: b709820eff00d66107f832998b19e998
-      size: 349
+      md5: f0523a1d60fcdfcd30e1a083a7ab1b99
+      size: 350
     outs:
     - path: ./models/cars.joblib
       hash: md5
-      md5: 9402ec0883f8043c6fca3a110d5ea084
-      size: 1574320101
+      md5: e5e178e3e6a80dbc79ae9013832dcbdc
+      size: 2518931721
     - path: ./models/power.joblib
       hash: md5
       md5: 05be1fbdabc3d031c8c4d4fc8da0204f
       size: 662
+  test_model:
+    cmd: python src/stages/test_model.py
+    deps:
+    - path: src/config.yaml
+      hash: md5
+      md5: 2caf6bf69c969efd87e68a43bbee5e3c
+      size: 480
+    - path: src/stages/test_model.py
+      hash: md5
+      md5: 0a4ed31f0bc1c59c0f3a507d9e09fbed
+      size: 964
