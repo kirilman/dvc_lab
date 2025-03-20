@@ -5,7 +5,7 @@ stages:
     deps:
     - path: src/config.yaml
       hash: md5
-      md5: 2caf6bf69c969efd87e68a43bbee5e3c
+      md5: 00fa7adccd6d6f2bae02383734d93737
       size: 480
     - path: src/stages/prepare_dataset.py
       hash: md5
@@ -25,7 +25,7 @@ stages:
       size: 3058352
     - path: src/config.yaml
       hash: md5
-      md5: 2caf6bf69c969efd87e68a43bbee5e3c
+      md5: 00fa7adccd6d6f2bae02383734d93737
       size: 480
     - path: src/stages/data_splite.py
       hash: md5
@@ -53,7 +53,7 @@ stages:
       size: 2137849
     - path: src/config.yaml
       hash: md5
-      md5: 2caf6bf69c969efd87e68a43bbee5e3c
+      md5: 00fa7adccd6d6f2bae02383734d93737
       size: 480
     - path: src/stages/train.py
       hash: md5
@@ -62,8 +62,8 @@ stages:
     outs:
     - path: ./models/cars.joblib
       hash: md5
-      md5: e5e178e3e6a80dbc79ae9013832dcbdc
-      size: 2518931721
+      md5: 1749cdde324604848fbbabf1f939c2c6
+      size: 629743904
     - path: ./models/power.joblib
       hash: md5
       md5: 05be1fbdabc3d031c8c4d4fc8da0204f
@@ -73,7 +73,7 @@ stages:
     deps:
     - path: src/config.yaml
       hash: md5
-      md5: 2caf6bf69c969efd87e68a43bbee5e3c
+      md5: 00fa7adccd6d6f2bae02383734d93737
       size: 480
     - path: src/stages/test_model.py
       hash: md5
